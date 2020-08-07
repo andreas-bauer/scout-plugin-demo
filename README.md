@@ -1,2 +1,4 @@
-# scout-plugin-demo
-Plugin demo for Scout
+# Scout Plugin Demo
+
+## Build
+`javac -cp "../Scout.jar" demo.java`
