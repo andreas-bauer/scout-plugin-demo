@@ -27,13 +27,13 @@ public class Demo {
         put(LeftClickAction.class.getSimpleName(), 0);
         put(RightClickAction.class.getSimpleName(), 0);
     }};
-    
+
     private static int paintCounter = 0;
     private static int globalStateCounter = 0;
     private static List<Widget> globalIssues = new ArrayList<>();
     private static List<Widget> currentIssues = new ArrayList<>();
     private static List<Widget> currentVisibleActions = new ArrayList<>();
-    
+
     private int lineOffset = 0;
     private final int lineOffsetSpace = 10;
 
@@ -136,44 +136,6 @@ public class Demo {
         totalActionsCounter.put(actionName, counter);
     }
 
-    /**
-     * Called when a report should be generated
-     * Adding this method will display this plugin in the Reports drop-down
-     */
-    public void generateReport() {
-
-        String report = getJSONReport();
-
-        File file = new File("reports/" + StateController.getProduct());
-        file.mkdirs();
-
-        String filename = "reports/" + StateController.getProduct() + "/demo-plugin-report.json";
-
-        try {
-            FileWriter fileWriter = new FileWriter(filename);
-            PrintWriter printWriter = new PrintWriter(fileWriter);
-            printWriter.print(report);
-            printWriter.close();
-        } catch (Exception e) {
-            log("Unable to generate report: " + e.getMessage());
-        }
-
-        StateController.displayMessage("Generating report: " + filename);
-    }
-
-    private String getJSONReport() {
-        JSONObject report = new JSONObject();
-        report.put("product", StateController.getProduct());
-        report.put("total-actions", totalActionsCounter);
-
-        List<String> issueTexts = globalIssues.stream()
-                .map(i -> i.getReportedText())
-                .collect(Collectors.toList());
-        report.put("issues", issueTexts);
-
-        return report.toJSONString();
-    }
-
     public void paintCaptureForeground(Graphics g) {
         if (!StateController.isOngoingSession()) {
             return;
@@ -196,12 +158,6 @@ public class Demo {
         drawTextLine(g2, "Paint Counter: " + paintCounter, x, y);
 
         drawTextLine(g2, "Number of Nodes: " + globalStateCounter, x, y);
-
-        int visibleActionsCounter = StateController.getStateTree().getVisibleActions().size();
-        drawTextLine(g2, "Total Visible Action: " + visibleActionsCounter, x, y);
-
-        int visibleStateCounter = StateController.getStateTree().getVisibleStates(StateController.getProduct()).size();
-        drawTextLine(g2, "Visible states: " + visibleStateCounter, x, y);
 
         drawTextLine(g2, "Total Issues: " + globalIssues.size(), x, y);
         drawDot(g2, x - dotXOffset, getDotYWithOffset(y), getIssuesColor(globalIssues));
@@ -262,6 +218,44 @@ public class Demo {
 
         g2.setColor(color);
         g2.fillOval(x + 2, y + 2, size - 4, size - 4);
+    }
+
+    /**
+     * Called when a report should be generated
+     * Adding this method will display this plugin in the Reports drop-down
+     */
+    public void generateReport() {
+
+        String report = getJSONReport();
+
+        File file = new File("reports/" + StateController.getProduct());
+        file.mkdirs();
+
+        String filename = "reports/" + StateController.getProduct() + "/demo-plugin-report.json";
+
+        try {
+            FileWriter fileWriter = new FileWriter(filename);
+            PrintWriter printWriter = new PrintWriter(fileWriter);
+            printWriter.print(report);
+            printWriter.close();
+        } catch (Exception e) {
+            log("Unable to generate report: " + e.getMessage());
+        }
+
+        StateController.displayMessage("Generating report: " + filename);
+    }
+
+    private String getJSONReport() {
+        JSONObject report = new JSONObject();
+        report.put("product", StateController.getProduct());
+        report.put("total-actions", totalActionsCounter);
+
+        List<String> issueTexts = globalIssues.stream()
+                .map(i -> i.getReportedText())
+                .collect(Collectors.toList());
+        report.put("issues", issueTexts);
+
+        return report.toJSONString();
     }
 
     private void log(String message) {
