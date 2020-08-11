@@ -179,7 +179,7 @@ public class Demo {
     }
 
     private Color getIssuesColor(List<Widget> issues) {
-        if (currentIssues.size() != 0) {
+        if (issues.size() != 0) {
             return Color.RED;
         }
 
