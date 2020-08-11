@@ -1,7 +1,12 @@
 # Scout Plugin Demo
 
 ## Build
-`javac -cp "../Scout.jar" demo.java`
+Ensure the `Demo.java` file in in the plugin folder of Scout.
+Than build the Java file with the `javac` command.
+
+`javac -cp "../Scout.jar" Demo.java`
+
+
 
 ## License
 
