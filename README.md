@@ -37,6 +37,8 @@ The red dot next to the total issues emphasizes that issues exist.
 
 In the **current** state, more detailed information about issues and visible actions are presented. Next to the issue counter is also a dot indicator. Additionally a list of all the reported text for each issue is presented. Next you can see a counter of all visible actions and also the status and type of every action.
 
+The crawling of information to be presented is done during a change in the state and then read inside the paint UI hook method. This ensures that more costly operations are only done if the state is really changed and not because of a mouse movement triggers a repaint. Observe the *Paint Counter* to get a feeling of how often the UI is repainted. 
+
 ![Screenshots with issues in state](./images/screenshot1.png)
 ![Screenshots without any issues in state](./images/screenshot2.png)
 
