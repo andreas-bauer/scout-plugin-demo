@@ -244,6 +244,7 @@ public class Demo {
         StateController.displayMessage("Generating report: " + filename);
     }
 
+    @SuppressWarnings("unchecked")
     private String getJSONReport() {
         JSONObject report = new JSONObject();
         report.put("product", StateController.getProduct());
