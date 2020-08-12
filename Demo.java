@@ -170,9 +170,8 @@ public class Demo {
 
         currentIssues.stream().forEach(i -> drawTextLine(g2, "├ Reported: " + i.getReportedText(), x, y));
 
-        drawTextLine(g2, "Visible actions: " + currentVisibleActions.size(), x, y);
+        drawTextLine(g2, "Visible Actions: " + currentVisibleActions.size(), x, y);
         for (Widget w : currentVisibleActions) {
-
             drawTextLine(g2, "├ Status: " + w.getWidgetStatus(), x, y);
             drawTextLine(g2, "└ Type: " + w.getWidgetSubtype(), x, y);
         }
