@@ -23,16 +23,16 @@ public class Demo {
     private static final int textBoxWidth = 400;
     private static final String LOG_FILE = "demo-plugin-log.txt";
     private static final SimpleDateFormat formatter = new SimpleDateFormat("hh:mm:ss");
-    private static final Map<String, Integer> totalActionsCounter = new HashMap<>() {{
+    private static final Map<String, Integer> totalActionsCounter = new HashMap<String, Integer>() {{
         put(LeftClickAction.class.getSimpleName(), 0);
         put(RightClickAction.class.getSimpleName(), 0);
     }};
 
     private static int paintCounter = 0;
     private static int globalStateCounter = 0;
-    private static List<Widget> globalIssues = new ArrayList<>();
-    private static List<Widget> currentIssues = new ArrayList<>();
-    private static List<Widget> currentVisibleActions = new ArrayList<>();
+    private static List<Widget> globalIssues = new ArrayList<Widget>();
+    private static List<Widget> currentIssues = new ArrayList<Widget>();
+    private static List<Widget> currentVisibleActions = new ArrayList<Widget>();
 
     private int lineOffset = 0;
     private final int lineOffsetSpace = 10;
