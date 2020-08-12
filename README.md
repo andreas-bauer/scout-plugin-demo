@@ -31,4 +31,9 @@ See example:
 
 Copyright (c) 2020 Andreas Bauer
 
-See [LICENSE](https://github.com/andreas-bauer/scout-plugin-demo/blob/master/LICENSE) file in the root of this project for license details.
+This work (source code) is licensed under [MIT](./LICENSES/MIT.txt).
+
+Files other than source code are licensed as follows:
+- Documentation and screenshots are licensed under [CC BY-SA 4.0](./LICENSES/CC-BY-SA-4.0.txt).
+
+See the [LICENSES](./LICENSES/) folder in the root of this project for license details.
