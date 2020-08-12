@@ -1,3 +1,8 @@
+<!--
+SPDX-FileCopyrightText: 2020 Andreas Bauer
+
+SPDX-License-Identifier: CC-BY-SA-4.0
+-->
 # Scout Plugin Demo
 
 ## Build
