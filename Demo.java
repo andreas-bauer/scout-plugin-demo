@@ -253,6 +253,9 @@ public class Demo {
                 .collect(Collectors.toList());
         report.put("issues", issueTexts);
 
+        int coveredPercent=StateController.getStateTree().coveredPercent(StateController.getProductVersion());
+        report.put("coverageInPercent", coveredPercent);
+
         return report.toJSONString();
     }
 
