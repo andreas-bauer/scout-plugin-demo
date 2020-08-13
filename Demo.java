@@ -224,24 +224,22 @@ public class Demo {
      * Adding this method will display this plugin in the Reports drop-down
      */
     public void generateReport() {
+        String reportFolderPath = "reports/" + StateController.getProduct();
+        createFolder(reportFolderPath);
 
         String report = getJSONReport();
-
-        File file = new File("reports/" + StateController.getProduct());
-        file.mkdirs();
-
-        String filename = "reports/" + StateController.getProduct() + "/demo-plugin-report.json";
-
         try {
+            String filename = reportFolderPath + "/demo-plugin-report.json";
             FileWriter fileWriter = new FileWriter(filename);
             PrintWriter printWriter = new PrintWriter(fileWriter);
             printWriter.print(report);
             printWriter.close();
+            StateController.displayMessage("Generating report: " + filename);
         } catch (Exception e) {
-            log("Unable to generate report: " + e.getMessage());
+            String msg = "Unable to generate report: " + e.getMessage();
+            log(msg);
+            StateController.displayMessage(msg);
         }
-
-        StateController.displayMessage("Generating report: " + filename);
     }
 
     @SuppressWarnings("unchecked")
@@ -256,6 +254,11 @@ public class Demo {
         report.put("issues", issueTexts);
 
         return report.toJSONString();
+    }
+
+    private void createFolder(String pathname) {
+        File file = new File(pathname);
+        file.mkdirs();
     }
 
     private void log(String message) {
