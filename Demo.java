@@ -68,6 +68,9 @@ public class Demo {
      * Called when the session is stopped
      */
     public void stopSession() {
+        String msg = "Session Stopped";
+        StateController.displayMessage(msg);
+        log(msg);
     }
 
     /**
