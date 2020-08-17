@@ -59,7 +59,8 @@ See example:
   "issues": [
       "Wrong title text",
       "Wrong button text"
-  ]
+  ],
+  "coverageInPercent":100
 }
 ```
 
