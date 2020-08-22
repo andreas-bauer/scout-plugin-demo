@@ -28,6 +28,8 @@ Than build the Java file with the `javac` command.
 
 `javac -cp "../Scout.jar" Demo.java`
 
+Tested with Java `openjdk 1.8` and `openjdk 14.0.2`.
+
 ## Impressions
 
 The visual representation of the plugin is divided into two parts for a **global** state and the **current** state. 
